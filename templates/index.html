@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Recommender</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Movie Recommendations</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,72 +15,35 @@
         form {
             margin-bottom: 20px;
         }
-        input[type="text"] {
-            padding: 10px;
-            width: 300px;
-            margin-right: 10px;
-        }
-        input[type="submit"] {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        #results {
-            margin-top: 20px;
-        }
         .movie {
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 10px;
-            width: 300px;
         }
     </style>
 </head>
 <body>
-
-    <h1>Movie Recommender</h1>
-    
-    <form id="movieForm">
-        <input type="text" name="keyword" placeholder="Enter keyword (e.g., comedy, horror)" required>
-        <input type="submit" value="Search">
+    <h1>Get Movie Recommendations by Genre</h1>
+    <form method="POST">
+        <label for="genre">Enter Genre:</label>
+        <input type="text" id="genre" name="genre" required>
+        <button type="submit">Get Recommendations</button>
     </form>
 
-    <div id="results"></div>
-
-    <script>
-        $(document).ready(function() {
-            $('#movieForm').on('submit', function(event) {
-                event.preventDefault();
-                const keyword = $('input[name="keyword"]').val();
-                $.ajax({
-                    url: '/recommend',
-                    type: 'POST',
-                    data: { keyword: keyword },
-                    success: function(movies) {
-                        let resultHtml = '';
-                        if (movies.length > 0) {
-                            movies.forEach(function(movie) {
-                                resultHtml += `
-                                    <div class="movie">
-                                        <h3>${movie.Title} (${movie.Year})</h3>
-                                        <img src="${movie.Poster}" alt="Poster" style="width: 100px;">
-                                        <p>Plot: ${movie.Plot}</p>
-                                        <p>Genre: ${movie.Genre}</p>
-                                        <p>IMDB ID: ${movie.imdbID}</p>
-                                    </div>
-                                `;
-                            });
-                        } else {
-                            resultHtml = '<p>No movies found.</p>';
-                        }
-                        $('#results').html(resultHtml);
-                    }
-                });
-            });
-        });
-    </script>
-
+    {% if movies %}
+        <h2>Recommendations for Genre: {{ genre }}</h2>
+        <ul>
+        {% for movie in movies %}
+            <li class="movie">
+                <h3>{{ movie.title }} ({{ movie.release_date[:4] if movie.release_date else 'N/A' }})</h3>
+                <p>{{ movie.overview }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        {% if genre %}
+            <p>No recommendations found for the genre "{{ genre }}".</p>
+        {% endif %}
+    {% endif %}
 </body>
 </html>
