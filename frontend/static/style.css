@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-color: #007acc;
+    background-color: #3b3c3d;
     color: white;
     padding: 20px;
     text-align: center;
@@ -22,25 +22,25 @@ main {
 }
 
 footer {
-    background-color: #007acc;
+    background-color: #3b3c3d;
     color: white;
     text-align: center;
     padding: 10px;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #007acc;
+    padding: 10px 50px;
+    background-color: #3b3c3d;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #005fa3;
+    background-color: #3b3c3d;
 }
 #images-container {
-    margin-top: 200px;
+    margin-top: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +48,7 @@ button:hover {
 }
 
 #images-container img {
-    width: 500px;
-    height: 500px;
+    width: 470px;
+    height: 470px;
     display: none; /* Initially hidden */
 }

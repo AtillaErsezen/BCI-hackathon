@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Frontend Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <header>
+        <h1>Welcome to Mindflix!</h1>
+    </header>
+    <main>
+        <section class="content">
+            <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="Logo" style="width: 275px; height: auto;">
+            
+            <button id="action-button" style="margin-bottom: 25px;">Watch</button>
+            <div id="images-container"></div>
+        </section>
+    </main>
+    
+    <style>
+        body {
+            position: relative; /* Allows absolute elements to position relative to the body */
+            min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+            margin: 0;
+        }
+    
+        #action-button {
+            position: absolute; /* Absolute positioning for precise control */
+            bottom: 2px; /* Position 20 pixels from the bottom of the page */
+            left: 50%; /* Start at the middle of the page horizontally */
+            transform: translateX(-50%); /* Shift the button to center it horizontally */
+        }
+    </style>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

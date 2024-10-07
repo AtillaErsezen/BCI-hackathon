@@ -4,16 +4,16 @@ document.getElementById("action-button").addEventListener("click", function() {
 
     // Array to store image URLs (use placeholder images)
     const imageUrls = [
-        "images\\war.webp",
-        "images\\action.webp",
-        "images\\comedy.webp",
-        "images\\crime.webp",
-        "images\\drama.webp",
-        "images\\fantasy.webp",
-        "images\\horror.webp",
-        "images\\romance.webp",
-        "images\\sci-fi.webp",
-        "images\\sports.webp"
+        "static/images/war.webp",
+        "static/images/action.webp",
+        "static/images/comedy.webp",
+        "static/images/crime.webp",
+        "static/images/drama.webp",
+        "static/images/fantasy.webp",
+        "static/images/horror.webp",
+        "static/images/romance.webp",
+        "static/images/sci-fi.webp",
+        "static/images/sports.webp"
     ];
 
     // Add images to the container
@@ -44,7 +44,7 @@ document.getElementById("action-button").addEventListener("click", function() {
                     currentIndex++;
                     flashImagesQuickly(); // Move to the next image immediately
                 }
-            }, 50); // Faster flashing speed (100ms for each flash)
+            }, 400); // Faster flashing speed (100ms for each flash)
         }
     };
 

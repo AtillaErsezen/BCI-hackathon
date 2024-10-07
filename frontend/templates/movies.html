@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .movie {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Get Movie Recommendations by Genre</h1>
+    <form method="POST">
+        <label for="genre">Enter Genre:</label>
+        <input type="text" id="genre" name="genre" required>
+        <button type="submit">Get Recommendations</button>
+    </form>
+
+    {% if movies %}
+        <h2>Recommendations for Genre: {{ genre }}</h2>
+        <ul>
+        {% for movie in movies %}
+            <li class="movie">
+                <h3>{{ movie.title }} ({{ movie.release_date[:4] if movie.release_date else 'N/A' }})</h3>
+                <p>{{ movie.overview }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        {% if genre %}
+            <p>No recommendations found for the genre "{{ genre }}".</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
